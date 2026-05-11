@@ -41,6 +41,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
 }
 
 .product-card:hover {
@@ -143,7 +144,7 @@
 
 .filters {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   margin-bottom: 20px;
   align-items: end;
@@ -169,6 +170,51 @@
   .filters {
     grid-template-columns: 1fr;
   }
+}
+
+.top-carousel {
+  margin-bottom: 24px;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  box-shadow: var(--shadow);
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.carousel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-caption {
+  position: absolute;
+  inset: auto 20px 16px 20px;
+  background: rgba(22, 22, 22, 0.7);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 70%;
+  text-align: left;
+}
+
+.carousel-caption span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .filter-group label {
@@ -238,6 +284,17 @@
   gap: 16px;
   margin-top: 20px;
   flex-wrap: wrap;
+}
+
+.btn-buy-now {
+  background: #ffc107;
+  color: #1b1b1b;
+  border: 1px solid #f2b600;
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.35);
+}
+
+.btn-buy-now:hover {
+  filter: brightness(1.02);
 }
 
 .qty-selector {

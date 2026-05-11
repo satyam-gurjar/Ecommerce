@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useSelector } from 'react-redux';
 import '../styles/navbar.css';
@@ -8,11 +8,30 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const navigate = useNavigate();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+
+  const firstName = user?.name ? user.name.trim().split(' ')[0] : '';
+  const displayName = firstName
+    ? firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase()
+    : '';
 
   const handleLogout = () => {
     logout();
     navigate('/login');
+    setMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    setSearchValue(params.get('q') || '');
+  }, [location.search]);
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    const query = searchValue.trim();
+    navigate(query ? `/?q=${encodeURIComponent(query)}` : '/');
     setMenuOpen(false);
   };
 
@@ -40,8 +59,16 @@ const Navbar = () => {
           <span />
         </button>
       </div>
+      <form className="navbar-search" onSubmit={handleSearchSubmit} role="search">
+        <input
+          type="search"
+          placeholder="Search products"
+          value={searchValue}
+          onChange={(event) => setSearchValue(event.target.value)}
+          aria-label="Search products"
+        />
+      </form>
       <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
-        <li><Link to="/shop" onClick={() => setMenuOpen(false)}>Shop</Link></li>
         <li>
           <Link to="/cart" onClick={() => setMenuOpen(false)}>
             Cart <span className="navbar-badge">{cartItems.length}</span>
@@ -49,7 +76,7 @@ const Navbar = () => {
         </li>
         {user ? (
           <>
-            <li><Link to="/profile" onClick={() => setMenuOpen(false)}>Hi, {user.name}</Link></li>
+            <li><Link to="/profile" onClick={() => setMenuOpen(false)}>Hi, {displayName}</Link></li>
             {user.role === 'admin' && <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin</Link></li>}
             <li><button onClick={handleLogout} className="btn-logout">Logout</button></li>
           </>

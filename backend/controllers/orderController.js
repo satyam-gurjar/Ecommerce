@@ -4,17 +4,31 @@ const sendEmail = require('../utils/sendEmail');
 const addOrderItems = async (req, res) => {
   try {
     const { items, totalAmount, address, paymentId } = req.body;
-    if (items && items.length === 0) {
+    if (!items || !Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ message: 'No order items' });
-    } else {
-      const order = new Order({
-        userId: req.user._id,
-        items,
-        totalAmount,
-        address,
-        paymentId
-      });
-      const createdOrder = await order.save();
+    }
+
+    const normalizedItems = items.map((item) => ({
+      productId: item.productId || item._id,
+      qty: item.qty,
+      price: item.price
+    }));
+
+    const invalidItem = normalizedItems.find(
+      (item) => !item.productId || !item.qty || item.price === undefined
+    );
+    if (invalidItem) {
+      return res.status(400).json({ message: 'Invalid order item data' });
+    }
+
+    const order = new Order({
+      userId: req.user._id,
+      items: normalizedItems,
+      totalAmount,
+      address,
+      paymentId
+    });
+    const createdOrder = await order.save();
 
       // Send Order Confirmation Email
       const message = `
@@ -32,8 +46,7 @@ const addOrderItems = async (req, res) => {
         message
       });
 
-      res.status(201).json(createdOrder);
-    }
+    res.status(201).json(createdOrder);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

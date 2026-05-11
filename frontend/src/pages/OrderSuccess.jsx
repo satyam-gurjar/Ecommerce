@@ -19,7 +19,7 @@ const OrderSuccess = () => {
       <p style={{ color: '#6B6763', fontSize: '1.2rem', marginBottom: '40px' }}>
         Thank you for your order. We have securely received your payment and will process your shipment shortly.
       </p>
-      <Link to="/shop" className="btn">Continue Shopping</Link>
+      <Link to="/" className="btn">Continue Shopping</Link>
     </div>
   );
 };

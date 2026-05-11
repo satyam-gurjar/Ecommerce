@@ -30,14 +30,14 @@ const Cart = () => {
           <h2 className="section-title">Shopping Cart</h2>
           <p className="subtle-text">Review items before checkout.</p>
         </div>
-        <Button to="/shop" variant="secondary">Continue Shopping</Button>
+        <Button to="/" variant="secondary">Continue Shopping</Button>
       </div>
 
       {cartItems.length === 0 ? (
         <EmptyState
           title="Your cart is empty"
           description="Browse our catalog and add items you love."
-          action={<Button to="/shop">Go Shopping</Button>}
+          action={<Button to="/">Go Shopping</Button>}
         />
       ) : (
         <div className="cart-layout">

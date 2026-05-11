@@ -65,7 +65,7 @@ const Profile = () => {
       ) : orders.length === 0 ? (
         <div style={{ background: '#FFF6F3', padding: '30px', borderRadius: '8px', textAlign: 'center', border: '1px solid rgba(217,92,71,0.22)' }}>
           <p style={{ color: '#6B6763', marginBottom: '15px' }}>You haven't placed any orders yet.</p>
-          <Link to="/shop" className="btn">Start Shopping</Link>
+          <Link to="/" className="btn">Start Shopping</Link>
         </div>
       ) : (
         <div style={{ display: 'grid', gap: '20px' }}>

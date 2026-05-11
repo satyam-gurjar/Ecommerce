@@ -34,6 +34,14 @@ const Checkout = () => {
     return Object.keys(nextErrors).length === 0;
   };
 
+  const buildOrderItems = () => (
+    cartItems.map((item) => ({
+      productId: item.productId || item._id,
+      qty: item.qty,
+      price: item.price
+    }))
+  );
+
   const handlePayment = async () => {
     try {
       setIsPaying(true);
@@ -89,6 +97,7 @@ const Checkout = () => {
           const verifyData = await verifyRes.json();
 
           if (verifyRes.ok) {
+            const orderItems = buildOrderItems();
             // ✅ STEP 5: Save Order
             const saveOrderRes = await fetch('/api/orders', {
               method: 'POST',
@@ -97,7 +106,7 @@ const Checkout = () => {
                 Authorization: `Bearer ${user.token}`
               },
               body: JSON.stringify({
-                items: cartItems,
+                items: orderItems,
                 totalAmount: totalPrice,
                 address,
                 paymentId: response.razorpay_payment_id
@@ -108,7 +117,8 @@ const Checkout = () => {
               dispatch(clearCart());
               navigate('/ordersuccess');
             } else {
-              alert('Order saving failed');
+              const saveOrderData = await saveOrderRes.json().catch(() => ({}));
+              alert(saveOrderData.message || 'Order saving failed');
               setIsPaying(false);
             }
           } else {
@@ -155,6 +165,7 @@ const Checkout = () => {
   };
 
   const bypassPayment = async () => {
+    const orderItems = buildOrderItems();
     const saveOrderRes = await fetch('/api/orders', {
       method: 'POST',
       headers: {
@@ -162,7 +173,7 @@ const Checkout = () => {
         Authorization: `Bearer ${user.token}`
       },
       body: JSON.stringify({
-        items: cartItems,
+        items: orderItems,
         totalAmount: totalPrice,
         address,
         paymentId: 'bypass_txn_' + Date.now()
@@ -204,7 +215,7 @@ const Checkout = () => {
         <EmptyState
           title="Your cart is empty"
           description="Add items to your cart before checking out."
-          action={<Button to="/shop">Browse Products</Button>}
+          action={<Button to="/">Browse Products</Button>}
         />
       ) : (
         <div className="checkout-grid">

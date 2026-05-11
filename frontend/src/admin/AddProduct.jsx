@@ -40,7 +40,7 @@ const AddProduct = () => {
       
       if (res.ok) {
         alert('Product created successfully with Cloudinary Image URL!');
-        navigate('/shop');
+        navigate('/');
       } else {
         alert(responseData.message || 'Error creating product');
       }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/cartSlice';
 import Button from '../components/ui/Button';
@@ -15,6 +15,7 @@ const ProductDetail = () => {
   const [qty, setQty] = useState(1);
   const [notice, setNotice] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -50,13 +51,26 @@ const ProductDetail = () => {
     }
   };
 
+  const handleBuyNow = () => {
+    if (product) {
+      dispatch(addToCart({
+        productId: product._id,
+        name: product.name,
+        price: product.price,
+        imageUrl: product.imageUrl,
+        qty
+      }));
+      navigate('/checkout');
+    }
+  };
+
   if (loading) return <Loader label="Loading product" />;
   if (!product) return <EmptyState title="Product not found" description="Try browsing the shop for more items." />;
 
   return (
     <div className="page">
       <div className="breadcrumb">
-        <Link to="/">Home</Link> / <Link to="/shop">Shop</Link> / {product.category} / <span>{product.name}</span>
+        <Link to="/">Home</Link> / {product.category} / <span>{product.name}</span>
       </div>
 
       <div className="product-detail">
@@ -85,6 +99,7 @@ const ProductDetail = () => {
               <button onClick={() => setQty((q) => q + 1)} aria-label="Increase quantity">+</button>
             </div>
             <Button onClick={handleAddToCart} size="lg">Add to Cart</Button>
+            <Button onClick={handleBuyNow} size="lg" className="btn-buy-now">Buy Now</Button>
           </div>
 
           {notice && <p className="subtle-text" role="status" aria-live="polite">{notice}</p>}

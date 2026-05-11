@@ -6,15 +6,53 @@ const Footer = () => {
   return (
     <footer className="site-footer">
       <div className="footer-content">
-        <div className="footer-brand">
-          <h3>Saha Traditions</h3>
-          <p className="subtle-text">Premium E-Commerce Platform.</p>
-        </div>
+        <div className="footer-grid">
+          <div className="footer-column">
+            <h4>About</h4>
+            <Link to="/footer-info">Contact Us</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/footer-info">Careers</Link>
+            <Link to="/footer-info">Stories</Link>
+            <Link to="/footer-info">Press</Link>
+            <Link to="/footer-info">Corporate Information</Link>
+          </div>
 
-        <div className="footer-links">
-          <Link to="/about">About Us</Link>
-          <Link to="/return">Return Policy</Link>
-          <Link to="/disclaimer">Disclaimer</Link>
+          <div className="footer-column">
+            <h4>Group Companies</h4>
+            <Link to="/footer-info">Myntra</Link>
+            <Link to="/footer-info">Cleartrip</Link>
+            <Link to="/footer-info">Shopsy</Link>
+          </div>
+
+          <div className="footer-column">
+            <h4>Help</h4>
+            <Link to="/footer-info">Payments</Link>
+            <Link to="/footer-info">Shipping</Link>
+            <Link to="/footer-info">Cancellation & Returns</Link>
+            <Link to="/footer-info">FAQ</Link>
+          </div>
+
+          <div className="footer-column">
+            <h4>Consumer Policy</h4>
+            <Link to="/footer-info">Terms Of Use</Link>
+            <Link to="/footer-info">Privacy</Link>
+            <Link to="/footer-info">Security</Link>
+            <Link to="/footer-info">Sitemap</Link>
+            <Link to="/footer-info">Grievance Redressal</Link>
+            <Link to="/footer-info">EPR Compliance</Link>
+          </div>
+
+          <div className="footer-column footer-address">
+            <h4>Mail Us</h4>
+            <p>Saha Traditions Pvt Ltd, 88 Market Road, Bhopal, India.</p>
+          </div>
+
+          <div className="footer-column footer-address">
+            <h4>Registered Office Address</h4>
+            <p>Saha Traditions Pvt Ltd, Bhopal, India.</p>
+            <p>CIN: U12345MP2026PTC000000</p>
+            <p>Telephone: 044-12345678</p>
+          </div>
         </div>
 
         <div className="footer-meta">

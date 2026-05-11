@@ -11,10 +11,39 @@ const generateOtp = () => Math.floor(100000 + Math.random() * 900000).toString()
 
 const sendOtpEmail = async ({ name, email, otp }) => {
   const message = `
-    <h2>Welcome to Saha Traditions, ${name}!</h2>
-    <p>Use the OTP below to verify your account. This OTP expires in 10 minutes.</p>
-    <p>Your one-time verification OTP is: <strong>${otp}</strong></p>
-  `;
+  <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
+    <div style="max-width: 600px; margin: auto; background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0;">
+      
+      <h2 style="color: #333;">Welcome to Saha Traditions, ${name} 👋</h2>
+      
+      <p style="color: #555; font-size: 14px;">
+        Thank you for signing up with <strong>Saha Traditions</strong>.  
+        To complete your account verification, please use the One-Time Password (OTP) below:
+      </p>
+
+      <div style="text-align: center; margin: 20px 0;">
+        <span style="display: inline-block; font-size: 24px; letter-spacing: 4px; font-weight: bold; color: #2d89ef;">
+          ${otp}
+        </span>
+      </div>
+
+      <p style="color: #555; font-size: 13px;">
+        This OTP is valid for <strong>10 minutes</strong>. Please do not share it with anyone.
+      </p>
+
+      <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+
+      <p style="color: #999; font-size: 12px;">
+        If you did not request this, you can safely ignore this email.
+      </p>
+
+      <p style="color: #999; font-size: 12px;">
+        — Team Saha Traditions
+      </p>
+
+    </div>
+  </div>
+`;
 
   await sendEmail({
     email,
