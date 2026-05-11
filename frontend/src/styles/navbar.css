@@ -2,15 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 50px;
-  background: rgba(9, 9, 11, 0.8);
+  padding: 18px 28px;
+  background: rgba(11, 12, 16, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.4);
 }
 
 .navbar-brand a {
@@ -33,7 +33,13 @@
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 24px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .navbar-links a, .navbar-links span {
@@ -81,10 +87,82 @@
   transform: translateY(-1px);
 }
 
+.btn-signup {
+  background: #f97316;
+  color: #fff;
+  border: 1px solid rgba(249, 115, 22, 0.6);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-signup:hover {
+  background: #fb923c;
+  border-color: #fb923c;
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+.navbar-badge {
+  background: rgba(249, 115, 22, 0.2);
+  color: #f97316;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.navbar-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #e2e8f0;
+  margin: 4px 0;
+  transition: transform 0.2s ease;
+}
+
+.navbar-links.open {
+  display: flex;
+}
+
 @media (max-width: 768px) {
   .navbar {
-    padding: 15px 20px;
+    padding: 15px 18px;
+  }
+
+  .navbar-toggle {
+    display: inline-flex;
     flex-direction: column;
-    gap: 15px;
+    justify-content: center;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    border-radius: 12px;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    justify-content: space-between;
   }
 }
