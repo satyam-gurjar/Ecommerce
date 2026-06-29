@@ -40,7 +40,7 @@ const AdminDashboard = () => {
   return (
     <div className="admin-page">
       <div className="admin-hero">
-        <img src="/SahaLogo.png" alt="Logo" />
+        <img src="/sahalogo.png" alt="Logo" />
         <div>
           <h2>Admin Dashboard</h2>
           <p className="subtle-text">Welcome back, <span style={{ color: '#2B2B2B' }}>{user?.name}</span></p>
