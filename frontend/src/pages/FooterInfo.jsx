@@ -6,32 +6,22 @@ const FooterInfo = () => {
     <div className="page">
       <div className="section-header">
         <div>
-          <h2 className="section-title">Saha Traditions Information</h2>
-          <p className="subtle-text">Quick access to company, support, and policy details.</p>
+          <h2 className="section-title">Contact Us</h2>
+          <p className="subtle-text">Quick access to customer support.</p>
         </div>
       </div>
 
       <div className="product-grid">
         <div className="product-card" style={{ padding: '24px' }}>
-          <h3>About</h3>
-          <p className="subtle-text">Contact Us, About Us, Careers, Stories, Press, Corporate Information.</p>
+          <h3>Email</h3>
+          <p className="subtle-text">traditionssaha@gmail.com</p>
         </div>
         <div className="product-card" style={{ padding: '24px' }}>
-          <h3>Help</h3>
-          <p className="subtle-text">Payments, Shipping, Cancellation & Returns, FAQ.</p>
+          <h3>Number</h3>
+          <p className="subtle-text">9136938373</p>
         </div>
-        <div className="product-card" style={{ padding: '24px' }}>
-          <h3>Consumer Policy</h3>
-          <p className="subtle-text">Terms of Use, Privacy, Security, Sitemap, Grievance Redressal, EPR Compliance.</p>
-        </div>
-        <div className="product-card" style={{ padding: '24px' }}>
-          <h3>Mail Us</h3>
-          <p className="subtle-text">Saha Traditions Pvt Ltd, 88 Market Road, Bhopal, India.</p>
-        </div>
-        <div className="product-card" style={{ padding: '24px' }}>
-          <h3>Registered Office</h3>
-          <p className="subtle-text">Saha Traditions Pvt Ltd, Bhopal, India. CIN: U12345MP2026PTC000000.</p>
-        </div>
+        
+        
       </div>
     </div>
   );

@@ -215,12 +215,26 @@ const Home = () => {
             { title: 'Fast Delivery', description: 'Track orders and get updates with every shipment.' },
             { title: 'Secure Payments', description: 'Trusted payment providers and encrypted checkout.' },
             { title: 'Curated Products', description: 'Quality-checked items from vetted sellers.' },
-            { title: '24/7 Support', description: 'We are here when you need help.' }
+            
           ].map((item) => (
-            <div key={item.title} className="product-card" style={{ padding: '24px' }}>
-              <h3>{item.title}</h3>
-              <p className="subtle-text">{item.description}</p>
-            </div>
+            item.title === '' ? (
+              <div
+                key={item.title}
+                style={{
+                  padding: '24px 0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <h3 style={{ margin: 0 }}>{item.title}</h3>
+              </div>
+            ) : (
+              <div key={item.title} className="product-card" style={{ padding: '24px' }}>
+                <h3>{item.title}</h3>
+                <p className="subtle-text">{item.description}</p>
+              </div>
+            )
           ))}
         </div>
       </section>

@@ -11,19 +11,12 @@ const Footer = () => {
             <h4>About</h4>
             <Link to="/footer-info">Contact Us</Link>
             <Link to="/about">About Us</Link>
-            <Link to="/footer-info">Careers</Link>
-            <Link to="/footer-info">Stories</Link>
-            <Link to="/footer-info">Press</Link>
-            <Link to="/footer-info">Corporate Information</Link>
+            <Link to="/footer-info"></Link>
+            <Link to="/footer-info"></Link>
+            <Link to="/footer-info"></Link>
+            <Link to="/footer-info"></Link>
           </div>
-
-          <div className="footer-column">
-            <h4>Group Companies</h4>
-            <Link to="/footer-info">Myntra</Link>
-            <Link to="/footer-info">Cleartrip</Link>
-            <Link to="/footer-info">Shopsy</Link>
-          </div>
-
+                  
           <div className="footer-column">
             <h4>Help</h4>
             <Link to="/footer-info">Payments</Link>
@@ -35,23 +28,23 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Consumer Policy</h4>
             <Link to="/footer-info">Terms Of Use</Link>
-            <Link to="/footer-info">Privacy</Link>
-            <Link to="/footer-info">Security</Link>
-            <Link to="/footer-info">Sitemap</Link>
-            <Link to="/footer-info">Grievance Redressal</Link>
-            <Link to="/footer-info">EPR Compliance</Link>
+            <Link to="/footer-info">Privacy Policy</Link>
+            <Link to="/footer-info"></Link>
+            <Link to="/footer-info"></Link>
+            <Link to="/footer-info"></Link>
+            <Link to="/footer-info"></Link>
           </div>
 
           <div className="footer-column footer-address">
             <h4>Mail Us</h4>
-            <p>Saha Traditions Pvt Ltd, 88 Market Road, Bhopal, India.</p>
+            <p>traditionssaha@gmail.com</p>
           </div>
 
           <div className="footer-column footer-address">
-            <h4>Registered Office Address</h4>
-            <p>Saha Traditions Pvt Ltd, Bhopal, India.</p>
-            <p>CIN: U12345MP2026PTC000000</p>
-            <p>Telephone: 044-12345678</p>
+            <h4></h4>
+            <p></p>
+            <p></p>
+            <p></p>
           </div>
         </div>
 
